@@ -86,8 +86,8 @@ nav {
 
 // 左边二级导航
 .second-nav {
-    @include secondNav(714px, 528px, 188px, 0, 2px solid #FF5000);
-    z-index: 100;
+    @include secondNav(714px, 532px, 188px, 0, 2px solid #FF5000);
+    z-index: 800;
     flex-direction: row;
     justify-content: flex-start;
     .second-nav-left {
@@ -207,18 +207,171 @@ nav {
         align-content: space-around;
         flex-wrap: wrap;
         height: 545px;
-        .carousel2 {
-            img {
-                height: 190px;
-                width: 250px;
+        .carousel {
+            position: relative;
+            width: 520px;
+            height: 280px;
+            overflow: hidden;
+            ul {
+                position: absolute;
+                left: 0;
+                top: 0;
+                li {
+                    float: left;
+                    width: 520px;
+                }
+            }
+            span {
+                width: 20px;
+                height: 30px;
+                background-color: rgba(0, 0, 0, .3);
+                position: absolute;
+                text-align: center;
+                font-size: 15px;
+                line-height: 30px;
+                color: #fff;
+                display: none;
+                cursor: pointer;
+                z-index: 300;
+            }
+            #arrowleft {
+                border-radius: 0 10px 10px 0/0 50% 50% 0;
+                left: 0;
+                top: 120px;
+            }
+            #arrowright {
+                border-radius: 10px 0 0 10px/50% 0 0 50%;
+                right: 0;
+                top: 120px;
             }
             div {
-                margin-bottom: 10px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                width: 70px;
+                height: 13px;
+                background-color: rgba(255, 255, 255, .4);
+                position: absolute;
+                bottom: 20px;
+                left: 230px;
+                border-radius: 8px/50%;
+                i {
+                    display: block;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background-color: #fff;
+                    cursor: pointer;
+                    z-index: 300;
+                }
+                i.active {
+                    background-color: #FF5000;
+                }
+            }
+        }
+        .carousel:hover span {
+            display: block;
+        }
+        .carousel2 {
+            position: relative;
+            width: 505px;
+            height: 226px;
+            overflow: hidden;
+            ul {
+                background-color: #fff;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                li {
+                    float: left;
+                    width: 520px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    img {
+                        height: 190px;
+                        width: 250px;
+                    }
+                }
+            }
+            section {
+                position: relative;
                 img {
                     width: 136px;
                     height: 19px;
                 }
+                b {
+                    font-size: 12px;
+                    color: #666;
+                    position: absolute;
+                    top: 1;
+                    margin-left: 5px;
+                }
+                div {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                    width: 520px;
+                    height: 3px;
+                    background-color: rgba(255, 255, 255, .4);
+                    position: absolute;
+                    bottom: 2px;
+                    left: 0px;
+                    border-radius: 8px/50%;
+                    i {
+                        display: block;
+                        width: 87px;
+                        height: 3px;
+                        background-color: #FF1648;
+                        cursor: pointer;
+                        z-index: 300;
+                    }
+                    i.active {
+                        background-color: #000;
+                    }
+                }
+                strong {
+                    display: block;
+                    width: 20px;
+                    height: 18px;
+                    font-size: 13px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    z-index: 300;
+                    em {
+                        color: #FF1648;
+                    }
+                }
             }
+            span {
+                width: 20px;
+                height: 30px;
+                background-color: rgba(0, 0, 0, .3);
+                position: absolute;
+                text-align: center;
+                font-size: 15px;
+                line-height: 30px;
+                color: #fff;
+                display: none;
+                cursor: pointer;
+                z-index: 300;
+            }
+            #arrowleft1 {
+                border-radius: 0 10px 10px 0/0 50% 50% 0;
+                left: 0;
+                top: 90px;
+            }
+            #arrowright1 {
+                border-radius: 10px 0 0 10px/50% 0 0 50%;
+                right: 0;
+                top: 90px;
+            }
+        }
+        .carousel2:hover span {
+            display: block;
         }
         .nav-right-bottom-left-banner2 {
             p {

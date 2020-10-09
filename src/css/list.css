@@ -38,7 +38,7 @@ h6 {
 .top .wrapper::after, .top-right li:nth-child(1) dl::after,
 .top-right li:nth-child(3) dl::after,
 .top-right li:nth-child(7) dl::after,
-.top-right li:nth-child(8) dl::after, .search-right .search::after {
+.top-right li:nth-child(8) dl::after, .search-right .search::after, .xuanfu-search-right .xuanfu-search::after {
   content: '';
   clear: both;
   overflow: hidden;
@@ -279,7 +279,7 @@ h6 {
 .top .wrapper::after, .top-right li:nth-child(1) dl::after,
 .top-right li:nth-child(3) dl::after,
 .top-right li:nth-child(7) dl::after,
-.top-right li:nth-child(8) dl::after, .search-right .search::after {
+.top-right li:nth-child(8) dl::after, .search-right .search::after, .xuanfu-search-right .xuanfu-search::after {
   content: '';
   clear: both;
   overflow: hidden;
@@ -390,6 +390,78 @@ h6 {
 }
 .search-right .search-bottom li a:hover {
   color: #FF8D00;
+}
+
+.xuanfu-search {
+  position: fixed;
+  top: -60px;
+  left: 0;
+  background-color: #fff;
+  z-index: 2000;
+  width: 100%;
+}
+.xuanfu-search .wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  height: 54px;
+  align-items: center;
+}
+.xuanfu-search .xuanfu-search-left {
+  width: 90px;
+  height: 40px;
+  margin-left: 20px;
+  margin-right: 140px;
+}
+.xuanfu-search .xuanfu-search-left img {
+  width: 80px;
+  height: 33px;
+}
+.xuanfu-search .xuanfu-search-right {
+  margin-left: 40px;
+}
+
+.xuanfu-search-right .xuanfu-search {
+  width: 554px;
+  border: 2px solid #FF5000;
+  border-radius: 20px 0 0 20px/50% 0 0 50%;
+  position: relative;
+}
+.xuanfu-search-right .xuanfu-search span:nth-child(1) {
+  float: left;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 20px;
+  color: #ccc;
+}
+.xuanfu-search-right .xuanfu-search input:nth-child(2) {
+  float: left;
+  height: 24px;
+  margin: 6px 0;
+  outline: 0;
+  border: 0;
+  margin-left: 10px;
+  width: 450px;
+}
+.xuanfu-search-right .xuanfu-search span:nth-child(3) {
+  float: right;
+  font-size: 25px;
+  margin-top: 5px;
+  margin-right: 10px;
+  color: #ccc;
+}
+.xuanfu-search-right .xuanfu-search a:nth-child(4) {
+  width: 74px;
+  height: 40px;
+  background-image: linear-gradient(to right, #FF8D00, #FF5300);
+  font-size: 15px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 0 15px 15px 0/0 50% 50% 0;
+  color: #fff;
+  position: absolute;
+  right: -74px;
+  top: -2px;
 }
 
 .list {

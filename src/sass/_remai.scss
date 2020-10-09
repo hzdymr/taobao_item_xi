@@ -121,4 +121,11 @@
     justify-content: space-around;
     align-items: center;
     height: 170px;
+    img {
+        cursor: pointer;
+        border: 2px solid transparent;
+    }
+    img:hover {
+        border: 2px solid #FF681D;
+    }
 }

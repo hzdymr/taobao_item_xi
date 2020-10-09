@@ -25,6 +25,10 @@ b {
     font-style: normal;
 }
 
+body {
+    font-family: tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif;
+}
+
 
 /* 设置版心 */
 
@@ -40,6 +44,10 @@ h4,
 h5,
 h6 {
     font-weight: normal;
+}
+
+.active {
+    background-color: #FF5000;
 }
 
 @import "top";

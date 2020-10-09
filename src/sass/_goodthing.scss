@@ -39,9 +39,25 @@ main {
         justify-content: space-around;
         width: 180px;
         cursor: pointer;
-        img {
-            width: 180px;
-            height: 180px;
+        .img-shadow {
+            position: relative;
+            section {
+                position: absolute;
+                width: 180px;
+                height: 180px!important;
+                left: 0;
+                top: 0;
+                background-color: rgba(0, 0, 0, .2);
+                z-index: 10;
+                display: none;
+            }
+            img {
+                width: 180px;
+                height: 180px;
+            }
+        }
+        .img-shadow:hover section {
+            display: block;
         }
         h4 {
             font-weight: normal;

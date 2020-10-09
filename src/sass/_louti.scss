@@ -17,13 +17,25 @@
         position: relative;
         z-index: 200;
         cursor: pointer;
+        border-bottom: 1px solid #F4F4F4;
+        &.active {
+            color: #fff;
+            background-color: #FD5F09;
+            em {
+                color: #fff;
+            }
+        }
     }
     div:hover {
         color: #fff;
         background-color: #FD5F09;
+        em {
+            color: #fff;
+        }
     }
      :nth-child(1) {
         color: #FF7F50;
+        border-radius: 10px 10px 0 0;
     }
      :nth-child(2) {
         color: #FF699B;
@@ -41,6 +53,9 @@
             font-size: 10px;
             color: #000;
         }
+    }
+     :nth-child(7) {
+        border-radius: 0 0 10px 10px;
     }
     span {
         position: absolute;
