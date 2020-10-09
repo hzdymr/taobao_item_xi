@@ -1,0 +1,57 @@
+@charset "utf-8"; //设置中文字符
+.louti {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    z-index: 200;
+    div {
+        width: 50px;
+        height: 50px;
+        font-size: 13px;
+        background-color: #fff;
+        padding: 10px;
+        box-sizing: border-box;
+        text-align: center;
+        position: relative;
+        z-index: 200;
+        cursor: pointer;
+    }
+    div:hover {
+        color: #fff;
+        background-color: #FD5F09;
+    }
+     :nth-child(1) {
+        color: #FF7F50;
+    }
+     :nth-child(2) {
+        color: #FF699B;
+    }
+     :nth-child(3) {
+        color: #B5C927;
+    }
+     :nth-child(4) {
+        color: #FF8254;
+    }
+     :nth-child(5) {
+        em {
+            height: 10px;
+            display: block;
+            font-size: 10px;
+            color: #000;
+        }
+    }
+    span {
+        position: absolute;
+        top: -25px;
+        z-index: 4;
+        left: 5px;
+        font-size: 40px;
+        color: #FD5F09;
+    }
+    .active {
+        color: #fff;
+        background-color: #FD5F09;
+    }
+}

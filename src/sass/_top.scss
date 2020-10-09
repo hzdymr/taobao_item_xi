@@ -1,0 +1,254 @@
+@charset "utf-8"; //设置中文字符
+// 弹性盒模板
+@mixin flex($flex-direction:row, $justify-content:flex-start) {
+    display: flex;
+    flex-direction: $flex-direction;
+    justify-content: $justify-content;
+}
+
+@mixin ellipsis($w:300px, $h:30px) {
+    width: $w;
+    height: $h;
+    line-height: $h;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+// 二级导航模板
+@mixin secondNav($width, $height, $left:0, $top:0, $border:1px solid rgb(221, 219, 219)) {
+    display: none;
+    width: $width;
+    height: $height;
+    position: absolute;
+    border: $border;
+    left: $left;
+    top: $top;
+    z-index: 666;
+    background-color: #fff;
+}
+
+// 清浮动
+%cleafix {
+    content: '';
+    clear: both;
+    overflow: hidden;
+    display: block;
+    height: 0;
+}
+
+// 顶部
+.top {
+    background-color: #F5F5F5;
+    height: 36px;
+    line-height: 36px;
+    font-size: 12px;
+    color: #6C6C6C;
+    .wrapper {
+        position: relative;
+        &::after {
+            @extend %cleafix;
+        }
+    }
+}
+
+// 顶部左边
+.top-left {
+    float: left;
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    justify-content: flex-start;
+    padding: 0 5px;
+    li {
+        padding: 0 5px;
+        position: relative;
+        span {
+            margin: 0 5px;
+        }
+    }
+    li:nth-child(1) {
+        dl {
+            @include secondNav(268px, 288px, 0, 36px, 0);
+            overflow: auto;
+            dd {
+                text-indent: 1em;
+                line-height: 3em;
+                a {
+                    color: #000;
+                    display: block;
+                }
+            }
+            dd:hover {
+                background-color: #F5F5F5;
+            }
+        }
+    }
+    li:nth-child(1):hover {
+        background-color: #fff;
+        dl {
+            display: block;
+        }
+    }
+    li:nth-child(2) {
+        a {
+            color: #F36747;
+        }
+    }
+    li:nth-child(3),
+    li:nth-child(4) {
+        a {
+            color: #6C6C6C;
+        }
+        a:hover {
+            color: #F36747;
+        }
+    }
+}
+
+// 顶部右边
+.top-right {
+    float: right;
+    list-style: none;
+    @include flex();
+    padding: 0 5px;
+    li {
+        padding: 0 5px;
+        position: relative;
+        span {
+            margin: 0 5px;
+        }
+        &>a {
+            color: #6C6C6C;
+        }
+        &>a:hover {
+            color: #F36747;
+        }
+    }
+    li:nth-child(1),
+    li:nth-child(3),
+    li:nth-child(7),
+    li:nth-child(8) {
+        dl {
+            @include secondNav(100%, 100%, 0, 36px, 0);
+            // border-bottom: 1px solid #ccc;
+            &::after {
+                @extend %cleafix;
+            }
+            dd {
+                text-indent: 0.5em;
+                line-height: 3em;
+                background-color: #fff;
+                // border-left: 1px solid #ccc;
+                // border-right: 1px solid #ccc;
+                a {
+                    color: #000;
+                    display: block;
+                }
+            }
+            dd:hover {
+                background-color: #F5F5F5;
+            }
+        }
+    }
+    li:nth-child(1):hover,
+    li:nth-child(3):hover,
+    li:nth-child(7):hover,
+    li:nth-child(8):hover {
+        background-color: #fff;
+        dl {
+            display: block;
+        }
+    }
+    li:nth-child(3):hover {
+        span {
+            color: #F36747;
+        }
+    }
+    li:nth-child(2) {
+        span:nth-child(1) {
+            color: red;
+        }
+    }
+    li:nth-last-child(1) {
+        position: static;
+        span:nth-child(1) {
+            color: red;
+        }
+    }
+    li:nth-last-child(1):hover {
+        background-color: #fff;
+        .top-nav {
+            @include flex();
+        }
+    }
+}
+
+// 网站导航二级导航部分
+.top-nav {
+    @include secondNav(1190px, 311px, 0, 36px);
+    padding-left: 10px;
+    box-sizing: border-box;
+    display: none;
+    dd {
+        width: 295px;
+        div {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            height: 30px;
+            a {
+                color: #6C6C6C;
+                float: left;
+                padding: 0 5px;
+                border-radius: 3px;
+            }
+        }
+    }
+    .top-nav-first {
+        border-right: 1px solid #ccc;
+        h2 {
+            color: #fc4200;
+            margin-left: 20px;
+        }
+        a:hover {
+            background-color: #fc4200;
+            color: #fff;
+        }
+    }
+    .top-nav-second {
+        height: 150px;
+        border-right: 1px solid #ccc;
+        h2 {
+            color: #9fb838;
+            margin-left: 20px;
+        }
+        a:hover {
+            background-color: #9fb838;
+            color: #fff;
+        }
+    }
+    .top-nav-third {
+        border-right: 1px solid #ccc;
+        height: 210px;
+        h2 {
+            color: #d75696;
+            margin-left: 20px;
+        }
+        a:hover {
+            background-color: #d75696;
+            color: #fff;
+        }
+    }
+    .top-nav-fourth {
+        h2 {
+            color: #2e9fdb;
+            margin-left: 20px;
+        }
+        a:hover {
+            background-color: #2e9fdb;
+            color: #fff;
+        }
+    }
+}

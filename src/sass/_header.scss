@@ -1,0 +1,149 @@
+@charset "utf-8"; //设置中文字符
+// 弹性盒模板
+@mixin flex($flex-direction:row, $justify-content:flex-start) {
+    display: flex;
+    flex-direction: $flex-direction;
+    justify-content: $justify-content;
+}
+
+// 二级导航模板
+@mixin secondNav($width, $height, $left:0, $top:0, $border:1px solid rgb(221, 219, 219)) {
+    display: none;
+    width: $width;
+    height: $height;
+    position: absolute;
+    border: $border;
+    left: $left;
+    top: $top;
+    z-index: 666;
+    background-color: #fff;
+}
+
+// 清浮动
+%cleafix {
+    content: '';
+    clear: both;
+    overflow: hidden;
+    display: block;
+    height: 0;
+}
+
+// 广告1
+.advertising1 {
+    background-color: #E71B1B;
+    a {
+        img {
+            display: block;
+            margin: auto;
+        }
+    }
+}
+
+// 搜索框一块
+.se-search {
+    .wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding-top: 24px;
+    }
+    .search-left {
+        width: 190px;
+        height: 80px;
+        margin-left: 20px;
+        margin-top: 20px;
+        img {
+            width: 142px;
+            height: 58px;
+        }
+    }
+    .search-right {
+        margin-left: 40px;
+    }
+}
+
+// 搜索框
+.search-right {
+    .search {
+        width: 554px;
+        border: 2px solid #FF5000;
+        border-radius: 20px 0 0 20px/50% 0 0 50%;
+        margin-top: 20px;
+        &::after {
+            @extend %cleafix;
+        }
+        position: relative;
+        & span:nth-child(1) {
+            float: left;
+            font-size: 20px;
+            margin-top: 10px;
+            margin-left: 20px;
+            color: #ccc;
+        }
+        & input:nth-child(2) {
+            float: left;
+            height: 24px;
+            margin: 6px 0;
+            outline: 0;
+            border: 0;
+            margin-left: 10px;
+            width: 450px;
+        }
+        & span:nth-child(3) {
+            float: right;
+            font-size: 25px;
+            margin-top: 5px;
+            margin-right: 10px;
+            color: #ccc;
+        }
+        & a:nth-child(4) {
+            width: 74px;
+            height: 40px;
+            background-image: linear-gradient(to right, #FF8D00, #FF5300);
+            font-size: 15px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 0 15px 15px 0/0 50% 50% 0;
+            color: #fff;
+            position: absolute;
+            right: -74px;
+            top: -2px;
+        }
+    }
+    .search-top {
+        position: absolute;
+        left: 20px;
+        bottom: 36px;
+        font-size: 12px;
+        a {
+            color: #FF5000;
+            display: inline-block;
+            padding: 5px;
+            border-radius: 5px;
+        }
+        & a:nth-child(1) {
+            background-image: linear-gradient(to right, #FF8D00, #FF5300);
+            color: #fff;
+        }
+        & a:nth-child(2):hover,
+        & a:nth-child(3):hover {
+            background-color: rgba($color: #FF5000, $alpha: 0.1);
+        }
+    }
+    .search-bottom {
+        width: 590px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 12px;
+        margin-top: 5px;
+        li {
+            a {
+                color: #000;
+            }
+            a:hover {
+                color: #FF8D00;
+            }
+        }
+    }
+}

@@ -1,0 +1,99 @@
+@charset "utf-8"; //设置中文字符
+.footer-top {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: space-around;
+    height: 63px;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    li {
+        padding: 0 5px;
+        margin-left: 5px;
+        font-size: 10px;
+        a {
+            color: #6c6c6c;
+            font-size: 12px;
+        }
+        a:hover {
+            color: #FF5C00;
+        }
+    }
+}
+
+// 中间部分
+.footer-middle {
+    color: #9C9C9C;
+    a {
+        color: #6c6c6c;
+        font-size: 12px;
+    }
+    a:hover {
+        color: #FF5C00;
+    }
+    &>ul {
+        display: inline-flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-right: 20px;
+        height: 26px;
+        align-items: center;
+        li {
+            padding: 0 5px;
+            a {
+                color: #6c6c6c;
+                font-size: 12px;
+            }
+        }
+    }
+    &>span {
+        font-size: 12px;
+        color: #9C9C9C;
+        margin-left: 10px;
+    }
+    &>div {
+        span {
+            padding: 0 5px;
+        }
+    }
+}
+
+// 底部下面部分
+.footer-bottom {
+    a {
+        background: url(../images/dibu2.jpg);
+        display: inline-block;
+        margin-right: 30px;
+        height: 40px;
+    }
+    a:nth-child(2) {
+        width: 30px;
+    }
+    a:nth-child(3) {
+        width: 33px;
+        background-position: -38px 0;
+    }
+    a:nth-child(4) {
+        width: 50px;
+        background-position: -84px 0;
+    }
+    a:nth-child(5) {
+        width: 83px;
+        background-position: -140px 0;
+    }
+    a:nth-child(6) {
+        width: 250px;
+        background: url(../images/dibu3.png);
+        background-size: 250px;
+        height: 64px;
+    }
+    a:nth-child(7) {
+        width: 250px;
+        background-position: -280px 0;
+    }
+    a:nth-child(8) {
+        width: 250px;
+        background-position: -280px 0;
+    }
+}

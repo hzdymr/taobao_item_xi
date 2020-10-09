@@ -1,0 +1,124 @@
+@charset "utf-8"; //设置中文字符
+// 清浮动
+%cleafix {
+    content: '';
+    clear: both;
+    overflow: hidden;
+    display: block;
+    height: 0;
+}
+
+.remai {
+    margin-top: 10px;
+    .wrapper {
+        height: 962px;
+        h3 {
+            margin-left: 20px;
+            color: #FF2E16;
+            height: 48px;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            span {
+                display: inline-block;
+                width: 5px;
+                height: 16px;
+                background-color: #FF681D;
+                margin-right: 10px;
+            }
+        }
+        &>p {
+            font-size: 12px;
+            margin-bottom: 20px;
+            margin-left: 5px;
+            &::after {
+                @extend %cleafix;
+            }
+            a {
+                color: #B5B5B5;
+                float: left;
+                margin-left: 10px;
+            }
+            a:hover {
+                color: #FF2E16;
+            }
+        }
+    }
+}
+
+.remai-wupin {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    div {
+        width: 238px;
+        height: 352px;
+        box-sizing: border-box;
+        border: 1px solid #F4F4F4;
+        padding: 20px;
+        img {
+            width: 197px;
+            height: 197px;
+            cursor: pointer;
+        }
+        p:nth-of-type(1) {
+            font-size: 14px;
+            cursor: pointer;
+            color: #898989;
+            height: 40px;
+        }
+        p:nth-of-type(2) {
+            font-size: 12px;
+            cursor: pointer;
+            color: #898989;
+            height: 40px;
+            span {
+                margin-right: 10px;
+            }
+        }
+        p:nth-of-type(3) {
+            i {
+                cursor: pointer;
+                color: #FF2E16;
+            }
+            strong {
+                cursor: pointer;
+                color: #FF2E16;
+                font-size: 22px;
+            }
+            em {
+                color: #999;
+                font-size: 10px;
+                text-decoration: line-through;
+                cursor: pointer;
+            }
+            em:hover {
+                text-decoration: none;
+            }
+            span {
+                font-size: 10px;
+                color: #999;
+                float: right;
+                line-height: 33px;
+            }
+        }
+    }
+    div:hover {
+        border: 1px solid #FF681D;
+    }
+     :nth-child(5),
+     :nth-child(10) {
+        border-right: 0;
+    }
+}
+
+.remai-bottom {
+    border-top: 1px solid #F4F4F4;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 170px;
+}
