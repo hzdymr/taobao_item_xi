@@ -878,7 +878,6 @@ define([], function() {
                 top <= 500 ? $('.louti').css({ "top": 500 - top }) : $('.louti').css({ "top": "70px" });
                 $('.louceng').each(function(index, element) {
                     let loucengtop = $(element).offset().top;
-                    console.log(loucengtop, top);
                     if (loucengtop >= top) {
                         $('.louti .lounav').removeClass('active');
                         $('.louti .lounav').eq(index).addClass('active');
