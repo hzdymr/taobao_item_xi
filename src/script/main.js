@@ -1,3 +1,4 @@
+//配置模块
 require.config({
     // baseUrl: '', //公共的路径，基路径，所有模块共有的路径
     paths: { //模块路径,路径引入后缀名必须忽略，配置里面已经存在后缀名（扩展名）。
@@ -15,4 +16,9 @@ require.config({
             exports: 'jq_lazyload'
         }
     }
+});
+
+//加载模块
+require(['jquery', 'jq_lazyload', 'jq_cookie'], function() {
+    require(['index_module']);
 });
