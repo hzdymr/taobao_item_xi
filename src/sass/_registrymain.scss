@@ -1,0 +1,66 @@
+@charset "utf-8"; //设置中文字符
+.content {
+    height: 600px;
+    margin: 50px 0px;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    div,
+    h3 {
+        width: 720px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
+    .login-name {
+        font-weight: bold;
+    }
+    .login-pass {
+        em {
+            font-weight: bold;
+            margin-right: 20px;
+        }
+    }
+    .pass,
+    .passtwo,
+    .user {
+        line-height: 37px;
+        padding-left: 45px;
+        input {
+            width: 222px;
+            height: 37px;
+            border: 1px solid #ccc;
+            outline: 0;
+            text-indent: 10px;
+            line-height: 37px;
+            margin-left: 50px;
+        }
+    }
+    h3 {
+        padding-right: 200px;
+        font-weight: bold;
+    }
+    .submit {
+        input {
+            width: 200px;
+            border-radius: 5px;
+            height: 38px;
+            background-color: #f40;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            line-height: 38px;
+            outline: 0;
+            margin-top: 20px;
+            border: 0;
+            cursor: pointer;
+            &:hover {
+                background-color: rgb(240, 68, 5);
+            }
+        }
+    }
+}

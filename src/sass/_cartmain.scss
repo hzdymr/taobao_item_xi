@@ -82,6 +82,9 @@ main {
         font-weight: bold;
         width: 100px;
         font-size: 16px;
+        em {
+            font-weight: bold;
+        }
     }
     .quantity {
         display: flex;
@@ -137,14 +140,14 @@ main {
     color: #000;
     margin-bottom: 30px;
     background-color: #e5e5e5;
-    .all {
+    .allse {
         margin-left: 10px;
     }
-    .delete {
+    .deleteall {
         color: #000;
         &:hover {
             text-decoration: underline;
-            color: #FF4400;
+            color: #FF4400!important;
         }
     }
     .selected {

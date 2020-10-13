@@ -56,6 +56,7 @@
                   });
                   $strhtml += '</div>';
                   list.html($strhtml); //追加数据
+                  $('a').attr("target", "_blank");
                   //实现懒加载效果
                   $("img.lazy").lazyload({
                       effect: "fadeIn" //图片显示方式
@@ -109,6 +110,7 @@
                               num = 4 - num % 4;
                               xuanran(num, `<div class="item" style="border:0"></div>`, '.list-wupin-item');
                           }
+                          $('a').attr("target", "_blank");
                           //实现懒加载效果
                           $("img.lazy").lazyload({
                               effect: "fadeIn" //图片显示方式
@@ -157,7 +159,6 @@
               });
               //   降序
               $('.price dl dd').eq(1).on('click', function() {
-                  console.log('c');
                   for (let i = 0; i < array.length - 1; i++) {
                       for (let j = 0; j < array.length - i - 1; j++) {
                           prev = parseFloat(array[j].find('.price i').html()); //取上个价格

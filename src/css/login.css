@@ -464,174 +464,103 @@ h6 {
   top: -2px;
 }
 
-main .wrapper {
-  width: 990px;
+main {
+  margin: 40px 0;
+  height: 600px;
+  background: url(https://gtms01.alicdn.com/tps/i1/TB1GTCYLXXXXXcHXpXXcoeQ2VXX-2500-600.jpg) no-repeat top center;
 }
-main .wrapper input[type="checkbox"],
-main .wrapper label {
+main .wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.login-box {
+  width: 350px;
+  height: 350px;
+  background-color: #E9E9F2;
+  color: #6c6c6c;
+  margin-right: 100px;
+  margin-top: 100px;
+  box-sizing: border-box;
+  padding: 25px;
+  position: relative;
+}
+.login-box h2 {
+  font-size: 16px;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 55px;
+}
+.login-box .error {
+  width: 300px;
+  height: 32px;
+  color: #000;
+  line-height: 32px;
+  font-size: 14px;
+  text-indent: 20px;
+  border: 1px solid #ffb4a8;
+  position: absolute;
+  top: 60px;
+  display: none;
+}
+.login-box .user,
+.login-box .pass {
+  text-align: center;
+  position: relative;
+}
+.login-box .user span,
+.login-box .pass span {
+  display: inline-block;
+  width: 40px;
+  height: 42px;
+  background-color: #ccc;
+  position: absolute;
+  top: 0;
+  left: 0px;
+  font-size: 24px;
+  line-height: 40px;
+  color: #fff;
+}
+.login-box .user input,
+.login-box .pass input {
+  height: 38px;
+  width: 300px;
+  text-indent: 50px;
+  font-size: 16px;
+  outline: 0;
+}
+.login-box .pass {
+  margin-top: 20px;
+}
+.login-box .submits input {
+  width: 300px;
+  height: 42px;
+  background-color: #f40;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 42px;
+  outline: 0;
+  margin-top: 20px;
+  border: 0;
   cursor: pointer;
 }
-
-.headline {
-  height: 33px;
-  border-bottom: 2px solid #ccc;
+.login-box .submits input:hover {
+  background-color: #f04405;
 }
-.headline div {
-  width: 124px;
-  border-bottom: 2px solid #FF4400;
-  height: 34px;
-  text-indent: 10px;
-}
-.headline div a {
-  color: #FF4400;
-  font-size: 16px;
-}
-
-.checkall {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.login-box .wangji {
+  margin-top: 40px;
   font-size: 12px;
-  color: #000;
-}
-.checkall div {
-  width: 120px;
-  height: 50px;
-  line-height: 50px;
-}
-.checkall div:nth-child(1) label {
-  margin-left: 10px;
-}
-.checkall div:nth-child(2) {
-  width: 400px;
-}
-
-.commodity {
-  border: 1px solid #ccc;
-  height: 130px;
-  box-sizing: border-box;
-  padding: 10px 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  color: #000;
-  margin-bottom: 20px;
-}
-.commodity section {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 300px;
-  margin-right: 100px;
-}
-.commodity section .image img {
-  width: 80px;
-  height: 80px;
-}
-.commodity section .explain {
-  width: 186px;
-}
-.commodity section .explain a {
-  color: #000;
-}
-.commodity section .explain a:hover {
-  text-decoration: underline;
-  color: #FF4400;
-}
-.commodity .price {
-  font-weight: bold;
-  width: 100px;
-  font-size: 16px;
-}
-.commodity .price em {
-  font-weight: bold;
-}
-.commodity .quantity {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 120px;
+  box-sizing: border-box;
+  padding-left: 80px;
 }
-.commodity .quantity a {
-  font-size: 24px;
+.login-box .wangji a {
   color: #000;
-  background-color: #e5e5e5;
-  display: inline-block;
-  width: 20px;
-  vertical-align: middle;
-  height: 34px;
-  line-height: 30px;
-  text-align: center;
-}
-.commodity .quantity input {
-  width: 50px;
-  height: 30px;
-}
-.commodity .allprice {
-  width: 100px;
-  font-weight: bold;
-  color: #FF4400;
-  font-size: 16px;
-}
-.commodity .allprice em {
-  font-weight: bold;
-}
-.commodity .delete {
-  width: 100px;
-}
-.commodity .delete a {
-  color: #000;
-}
-.commodity .delete a:hover {
-  text-decoration: underline;
-  color: #FF4400;
-}
-
-.commodity-bottom {
-  position: sticky;
-  bottom: 0px;
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 12px;
-  color: #000;
-  margin-bottom: 30px;
-  background-color: #e5e5e5;
-}
-.commodity-bottom .allse {
-  margin-left: 10px;
-}
-.commodity-bottom .deleteall {
-  color: #000;
-}
-.commodity-bottom .deleteall:hover {
-  text-decoration: underline;
-  color: #FF4400 !important;
-}
-.commodity-bottom .selected em {
-  color: #FF4400;
-  font-size: 18px;
-  padding: 0 5px;
-  font-weight: bold;
-}
-.commodity-bottom .total em {
-  color: #FF4400;
-  font-weight: bold;
-  font-size: 20px;
-  margin-left: 20px;
-}
-.commodity-bottom .count {
-  width: 120px;
-  height: 50px;
-  color: #fff;
-  font-size: 20px;
-  line-height: 50px;
-  background-color: #B0B0B0;
-  text-align: center;
+  margin-right: 20px;
 }
 
 .footer-top {
@@ -727,4 +656,4 @@ main .wrapper label {
   background-position: -280px 0;
 }
 
-/*# sourceMappingURL=cart.css.map */
+/*# sourceMappingURL=login.css.map */

@@ -29,6 +29,25 @@
 <a href="javascript:;">浙网文（2019）1033-086号</a><span>|</span>`, '.footer-middle>div');
           }(),
           renderer: ! function() { //渲染
+              function addcookie(name, value, days) {
+                  let date = new Date();
+                  date.setDate(date.getDate() + days);
+                  document.cookie = `${name}=${encodeURIComponent(value)};expires=${date};path=/`;
+              }
+
+              function getcookie(name) {
+                  let arr = decodeURIComponent(document.cookie).split('; ');
+                  for (let value of arr) {
+                      let newarr = value.split('=');
+                      if (newarr[0] === name) {
+                          return newarr[1];
+                      }
+                  }
+              }
+
+              function delcookie(name) {
+                  addcookie(name, '', -1);
+              }
               //1.渲染购物车列表
               //获取cookie，进行渲染。
               if ($.cookie('cookiesid') && $.cookie('cookienum')) { //cookie存在,获取cookie转成数组
@@ -37,6 +56,51 @@
                   for (let i = 0; i < sid.length; i++) {
                       rendercart(sid[i], num[i])
                   }
+                  //   全选
+                  $('.all').on('change', function() {
+                      $('.commodity').find(':checkbox').prop('checked', $(this).prop('checked'));
+                      $('.all').prop('checked', $(this).prop('checked'));
+                      //   calcprice(); //计算总价
+                  });
+                  let $inputs = $('.commodity').find(':checkbox');
+                  $('.commodity-item').on('change', $inputs, function() {
+                      //$(this):被委托的元素，checkbox
+                      if ($('.commodity').find(':checkbox').length === $('.commodity').find('input:checked').size()) {
+                          $('.all').prop('checked', true);
+                      } else {
+                          $('.all').prop('checked', false);
+                      }
+                      //   calcprice(); //计算总价
+                  });
+                  let $quantity_down = $('.commodity').find('.quantity-down');
+                  //   加减
+                  $('.quantity-down').on('click', function() {
+                          console.log(1);
+                          console.log(sid);
+                          var a = $(this).parent('.quantity').find('input').val();
+                      })
+                      //   // 结算
+                      //   inputs.on('click', function() {
+                      //       $('.selected em').html($('.shangpin_xuanze:checked').size());
+                      //       //   let total = 0;
+                      //       //   $('.total em').html($.each(allprice, function(index, value) {
+                      //       //       total += value;
+                      //       //   }));
+                      //       $.each(allprice.html, )
+                      //   });
+
+              }
+
+              function changenum() { //当商品数量改变时改变cookie
+                  let arrsid = []; //商品的sid
+                  let arrnum = []; //商品的数量
+                  arrsid = $.cookie('cookiesid').split(','); //获取cookie的sid，存放到数组中。
+                  arrnum = $.cookie('cookienum').split(','); //获取cookie的数量，存放到数组中。
+                  let index = $.inArray(sid, arrsid); //sid在数组中的位置
+                  let num = parseInt(arrnum[index]); //sid对应的数量
+                  //原来的数量+新添加数量，一起存入cookie
+                  arrnum[index] = num + parseInt($('.quantity input').val()); //原来的数量+新添加数量进行赋值
+                  $.cookie('cookienum', arrnum, { expires: 10, path: '/' }); //一起存入cookie
               }
               //封装函数实现渲染。
               function rendercart(sid, num) { //sid:渲染的商品编号    num:渲染的商品的数量。
@@ -50,17 +114,17 @@
                               strhtml += `
                               <section class="commodity">
                               <section>
-                              <div class="select"><input type="checkbox"></div>
+                              <div class="select"><input type="checkbox" class="shangpin_xuanze"></div>
                               <a href="detail.html?sid=${value.sid}" class="image"><img src="${value.url}" alt=""></a>
                               <p class="explain"><a href="detail.html?sid=${value.sid}">${value.title}</a></p>
                           </section>
                           <div style="width: 100px;"></div>
-                          <div class="price">￥${value.price}</div>
+                          <div class="price">￥<em>${value.price}</em></div>
                           <div class="quantity"><a class="quantity-down" href="javascript:void(0)">-</a>
                           <input type="text" value="${num}" />
                           <a class="quantity-add" href="javascript:void(0)">+</a></div>
                           <div class="allprice">￥<em>${(value.price*num).toFixed(2)}</em></div>
-                          <div class="delete"><a href="javascript:;">删除</a></div>
+                          <div class="delete"><a href="javascript:;" class="item-delete">删除</a></div>
                           </section>`;
                               $('.commodity-item').append(strhtml);
                               calc(); //总算总价
@@ -68,9 +132,8 @@
                       });
                   })
               }
-              //2.购物车其他功能的控制.
+
               //计算总的商品件数和总价。
-              // console.log($('.goods-item').length); //0  渲染出来的，异步的，无法获取
               function calc() {
                   let allprice = 0; //总价
                   let allcount = 0; //总的数量
