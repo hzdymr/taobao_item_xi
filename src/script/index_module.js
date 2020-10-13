@@ -671,7 +671,12 @@ define([], function() {
             }).done(function(data) {
                 //进行渲染结构代码。
                 let strhtml = '';
+                let num = 0;
                 $.each(data, function(index, value) { //遍历数组和对象
+                    num++;
+                    if (num > 50) {
+                        return
+                    }
                     strhtml += `
                     <a href="detail.html?sid=${value.sid}">
                         <div>

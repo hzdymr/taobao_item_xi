@@ -5,6 +5,12 @@
       }
   }
   define([], function() {
+      let array_default = []; //排序前的li数组
+      let array = []; //排序中的数组
+      //冒泡排序，比较相邻的两个数字。
+      let prev = null; //前一个商品价格
+      let next = null; //后一个商品价格
+      const list = $('.list-wupin');
       return {
           index_copy: ! function() { //列表页复制渲染
               // 底部上部分渲染
@@ -29,40 +35,148 @@
 <a href="javascript:;">浙网文（2019）1033-086号</a><span>|</span>`, '.footer-middle>div');
           }(),
           render: ! function() { //list-wupin渲染
-              const list = $('.list-wupin');
               $.ajax({
-                  url: 'http://192.168.11.18/jsTwo/taobao_xi/php/taobaodata.php',
+                  url: 'http://192.168.11.18/jsTwo/taobao_xi/php/listdata.php',
                   dataType: 'json'
               }).done(function(data) {
                   //进行渲染结构代码。
-                  let strhtml = '';
-                  let num = 0;
+                  let $strhtml = '<div class="list-wupin-item">';
                   $.each(data, function(index, value) { //遍历数组和对象
-                      num++;
-                      if (num > 48) {
-                          strhtml += '';
-                      } else {
-                          strhtml += `
-                    <div>
-                    <img class="lazy" data-original="${value.url}" alt="">
-                    <p class="price">￥${value.price}<span></span><em>${value.sailnumber}人付款</em></p>
-                    <p class="explain"><a href="javascript:;">${value.title}</a></p>
-                    <p class="address"><span class="iconfont">&#xe699;</span><a href="javascript:;">福森悦旗舰店</a><em>广东 东莞</em></p>
-                    <p class="icon"><span class="iconfont">&#xe705;</span><span class="iconfont">&#xe744;</span></p>
-                    <section>
-                        <span>找同款</span><i>找相似</i>
-                    </section>
-                </div> `;
-                      }
+                      $strhtml += `
+                      <div class="item">
+                      <a href="detail.html?sid=${value.sid}"><img class="lazy" data-original="${value.url}" alt=""></a>
+                      <p class="price">￥<i>${value.price}</i><span></span><em>${value.sailnumber}人付款</em></p>
+                      <p class="explain"><a href="detail.html?sid=${value.sid}">${value.title}</a></p>
+                      <p class="address"><span class="iconfont">&#xe699;</span><a href="detail.html?sid=${value.sid}">福森悦旗舰店</a><em>广东 东莞</em></p>
+                      <p class="icon"><span class="iconfont">&#xe705;</span><span class="iconfont">&#xe744;</span></p>
+                      <section>
+                          <span>找同款</span><i>找相似</i>
+                      </section>
+                  </div>`;
                   });
-                  list.html(strhtml); //追加数据
+                  $strhtml += '</div>';
+                  list.html($strhtml); //追加数据
                   //实现懒加载效果
                   $("img.lazy").lazyload({
                       effect: "fadeIn" //图片显示方式
                   });
+                  array_default = []; //排序前的item数组
+                  array = []; //排序中的数组
+                  prev = null;
+                  next = null;
+                  //将页面的div元素加载到两个数组中
+                  $('.list-wupin-item .item').each(function(index, element) {
+                      array[index] = $(this);
+                      array_default[index] = $(this);
+                  });
               });
           }(),
-          render_right: ! function() { //list-wupin渲染
+          page: ! function() { //分页
+              $('.pages').pagination({
+                  pageCount: 3, //总的页数
+                  jump: true, //是否开启跳转到指定的页数，布尔值。
+                  prevContent: '上一页', //将图标改成上一页下一页。
+                  nextContent: '下一页',
+                  callback: function(api) {
+                      //   console.log(api.getCurrent()); //获取当前的点击的页码。
+                      $.ajax({
+                          url: 'http://192.168.11.18/jsTwo/taobao_xi/php/listdata.php',
+                          data: {
+                              page: api.getCurrent() //传输数据
+                          },
+                          dataType: 'json'
+                      }).done(function(data) {
+                          let $strhtml = '<div class="list-wupin-item">';
+                          let num = 0;
+                          $.each(data, function(index, value) { //遍历数组和对象
+                              num++;
+                              $strhtml += `
+                        <div class="item">
+                        <a href="detail.html?sid=${value.sid}"><img class="lazy" data-original="${value.url}" alt=""></a>
+                        <p class="price">￥<i>${value.price}</i><span></span><em>${value.sailnumber}人付款</em></p>
+                        <p class="explain"><a href="detail.html?sid=${value.sid}">${value.title}</a></p>
+                        <p class="address"><span class="iconfont">&#xe699;</span><a href="detail.html?sid=${value.sid}">福森悦旗舰店</a><em>广东 东莞</em></p>
+                        <p class="icon"><span class="iconfont">&#xe705;</span><span class="iconfont">&#xe744;</span></p>
+                        <section>
+                            <span>找同款</span><i>找相似</i>
+                        </section>
+                    </div>`;
+                          });
+                          $strhtml += '</div>';
+                          list.html($strhtml); //追加数据
+                          //   保持结构
+                          if (num % 4 !== 0) {
+                              num = 4 - num % 4;
+                              xuanran(num, `<div class="item" style="border:0"></div>`, '.list-wupin-item');
+                          }
+                          //实现懒加载效果
+                          $("img.lazy").lazyload({
+                              effect: "fadeIn" //图片显示方式
+                          });
+                          array_default = []; //排序前的item数组
+                          array = []; //排序中的数组
+                          prev = null;
+                          next = null;
+                          //将页面的div元素加载到两个数组中
+                          $('.list-wupin-item .item').each(function(index, element) {
+                              array[index] = $(this);
+                              array_default[index] = $(this);
+                          });
+                      });
+                  }
+
+              });
+          }(),
+          div_sort: ! function() { //排序
+              // 默认
+              $('.sort li').eq(0).on('click', function() {
+                  $.each(array_default, function(index, value) {
+                      $('.list-wupin .list-wupin-item').append(value);
+                  });
+                  return;
+              });
+              // 升序
+              $('.price dl dd').eq(0).on('click', function() {
+                  for (let i = 0; i < array.length - 1; i++) {
+                      for (let j = 0; j < array.length - i - 1; j++) {
+                          prev = parseFloat(array[j].find('.price i').html()); //取上个价格
+                          next = parseFloat(array[j + 1].find('.price i').html()); //下一个的价格
+                          //通过价格的判断，改变的是数组.item的位置。
+                          if (prev > next) {
+                              let temp = array[j];
+                              array[j] = array[j + 1];
+                              array[j + 1] = temp;
+                          }
+                          console.log(prev, next);
+                      }
+                  }
+                  $('.list-wupin .list-wupin-item').empty(); //清空原来的列表
+                  $.each(array, function(index, value) {
+                      $('.list-wupin .list-wupin-item').append(value);
+                  });
+              });
+              //   降序
+              $('.price dl dd').eq(1).on('click', function() {
+                  console.log('c');
+                  for (let i = 0; i < array.length - 1; i++) {
+                      for (let j = 0; j < array.length - i - 1; j++) {
+                          prev = parseFloat(array[j].find('.price i').html()); //取上个价格
+                          next = parseFloat(array[j + 1].find('.price i').html()); //下一个的价格
+                          //通过价格的判断，改变的是数组.item的位置。
+                          if (prev < next) {
+                              let temp = array[j];
+                              array[j] = array[j + 1];
+                              array[j + 1] = temp;
+                          }
+                      }
+                  }
+                  $('.list-wupin .list-wupin-item').empty(); //清空原来的列表
+                  $.each(array, function(index, value) {
+                      $('.list-wupin .list-wupin-item').append(value);
+                  });
+              });
+          }(),
+          render_right: ! function() { //list-wupin-right渲染
               const list = $('.list-wu-right');
               $.ajax({
                   url: 'http://192.168.11.18/jsTwo/taobao_xi/php/taobaodata.php',
@@ -73,7 +187,7 @@
                   let num = 0;
                   $.each(data, function(index, value) { //遍历数组和对象
                       num++;
-                      if (num >= 30 && num <= 40) {
+                      if (num >= 30 && num <= 33) {
                           strhtml += `
                   <div>
                   <img class="lazy" src="${value.url}" alt="">

@@ -1,0 +1,48 @@
+@charset "utf-8"; //设置中文字符
+@mixin box() {
+    display: flex;
+    width: $width;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+em,
+strong,
+i,
+b {
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+/* 设置版心 */
+
+.wrapper {
+    width: 1190px;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+}
+
+@import "top";
+@import "header";
+@import "cartmain";
+@import "footer";

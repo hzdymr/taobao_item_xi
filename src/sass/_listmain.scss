@@ -53,7 +53,7 @@
     .price {
         position: relative;
         dl {
-            @include secondNav(121px, 164px, 0, 0);
+            @include secondNav(121px, 82px, 0, 0);
             // display: none;
             dd {
                 a {
@@ -72,14 +72,14 @@
 }
 
 // 列表页
-.list-wupin {
+.list-wupin-item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     align-content: space-between;
     width: 940px;
-    div {
+    .item {
         width: 222px;
         height: 362px;
         box-sizing: border-box;
@@ -91,7 +91,7 @@
             height: 220px;
             cursor: pointer;
         }
-        img:hover~section {
+        a:hover~section {
             opacity: 1;
             top: 190px;
         }
@@ -212,7 +212,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 999;
+    z-index: 200;
     div {
         width: 222px;
         height: 362px;
@@ -337,42 +337,9 @@
 
 // 页码
 .page {
-    margin: 30px 100px 50px;
-    section {
-        padding: 7px 10px;
-        background-color: #fff;
-        border: 1px solid #F4F4F4;
-        display: inline-block;
-        font-size: 14px;
-        &:hover {
-            border-color: #F40;
-        }
-        a {
-            padding: 0;
-            border: 0;
-        }
-    }
-    a {
-        display: inline-block;
-        color: #000;
-        padding: 5px 10px;
-        border: 1px solid #F4F4F4;
-    }
-    a:hover {
-        border-color: #F40;
-        color: #F40;
-    }
-    input {
-        width: 44px;
-        height: 30px;
-        color: #888;
-        text-indent: 10px;
-    }
-    strong {
-        color: #888;
-        padding: 0 5px;
-        font-size: 12px;
-    }
+    height: 60px;
+    padding-right: 200px;
+    box-sizing: border-box;
 }
 
 //楼梯
@@ -479,6 +446,7 @@
             border: 0;
             margin-left: 10px;
             width: 450px;
+            text-align: left;
         }
         & span:nth-child(3) {
             float: right;
